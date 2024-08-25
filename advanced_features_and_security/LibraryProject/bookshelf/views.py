@@ -51,15 +51,19 @@ def your_view(request):
     # Your view logic here
     return render(request, 'your_template.html', {'form': form})
 
-# views.py
-
-
 def example_view(request):
     if request.method == 'POST':
         form = ExampleForm(request.POST)
         if form.is_valid():
-            # Process form data
-            pass
+            # Process the form data, e.g., create or update a model instance
+            title = form.cleaned_data['title']
+            author = form.cleaned_data['author']
+            publication_year = form.cleaned_data['publication_year']
+            # Example: Create a new Book instance (if applicable)
+            # Book.objects.create(title=title, author=author, publication_year=publication_year)
+            # Redirect or render a success page
+            return redirect('success_url')  # Update with your success URL
     else:
         form = ExampleForm()
+
     return render(request, 'bookshelf/form_example.html', {'form': form})
