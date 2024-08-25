@@ -46,16 +46,21 @@ class CustomUser(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['date_of_birth']
-
-    
-    
-    class Book(models.Model):
-         title = models.CharField(max_length=255)
-         author = models.CharField(max_length=255)
-         publication_year = models.IntegerField()
-
-    def str(self):
-        return self.title
+    class Meta:
+        permissions = [
+            ("can_view", "Can view CustomUser"),
+            ("can_create", "Can create CustomUser"),
+            ("can_edit", "Can edit CustomUser"),
+            ("can_delete", "Can delete CustomUser"),
+        ]
 
     def str(self):
         return self.email
+    
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    publication_year = models.IntegerField()
+
+    def str(self):
+        return self.title
