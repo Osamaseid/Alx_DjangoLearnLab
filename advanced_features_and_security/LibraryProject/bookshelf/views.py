@@ -31,6 +31,7 @@ def book_list(request):
 
 def your_view(request):
     form = ExampleForm()
+
     return render(request, 'your_template.html', {'form': form})
 
 
@@ -45,10 +46,20 @@ def search_books(request):
     return render(request, 'bookshelf/book_list.html', {'books': books, 'form': form})
 
 
-from .forms import ExampleForm
-
 def your_view(request):
     form = ExampleForm()
     # Your view logic here
     return render(request, 'your_template.html', {'form': form})
 
+# views.py
+
+
+def example_view(request):
+    if request.method == 'POST':
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            # Process form data
+            pass
+    else:
+        form = ExampleForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
