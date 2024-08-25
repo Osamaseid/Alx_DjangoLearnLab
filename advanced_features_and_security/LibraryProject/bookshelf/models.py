@@ -47,13 +47,15 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['date_of_birth']
 
-    class Meta:
-        permissions = [
-            ("can_view", "Can view items"),
-            ("can_create", "Can create items"),
-            ("can_edit", "Can edit items"),
-            ("can_delete", "Can delete items"),
-        ]
+    
+    
+    class Book(models.Model):
+         title = models.CharField(max_length=255)
+         author = models.CharField(max_length=255)
+         publication_year = models.IntegerField()
+
+    def str(self):
+        return self.title
 
     def str(self):
         return self.email
