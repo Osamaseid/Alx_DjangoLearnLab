@@ -47,5 +47,13 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['date_of_birth']
 
+    class Meta:
+        permissions = [
+            ("can_view", "Can view items"),
+            ("can_create", "Can create items"),
+            ("can_edit", "Can edit items"),
+            ("can_delete", "Can delete items"),
+        ]
+
     def str(self):
         return self.email
