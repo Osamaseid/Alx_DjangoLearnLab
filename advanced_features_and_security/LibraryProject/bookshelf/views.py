@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import CustomUser
 from .models import Book
 from .forms import BookSearchForm
+from .forms import ExampleForm
 
 @permission_required('bookshelf.can_view', raise_exception=True)
 def view_item(request):
@@ -28,6 +29,10 @@ def book_list(request):
     books = Book.objects.all()  # Fetch all books from the database
     return render(request, 'bookshelf/book_list.html', {'books': books})
 
+def your_view(request):
+    form = ExampleForm()
+    return render(request, 'your_template.html', {'form': form})
+
 
 
 def search_books(request):
@@ -40,5 +45,10 @@ def search_books(request):
     return render(request, 'bookshelf/book_list.html', {'books': books, 'form': form})
 
 
+from .forms import ExampleForm
 
+def your_view(request):
+    form = ExampleForm()
+    # Your view logic here
+    return render(request, 'your_template.html', {'form': form})
 
