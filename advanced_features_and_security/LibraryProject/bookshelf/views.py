@@ -5,6 +5,7 @@ from .models import Book
 from .forms import BookSearchForm
 from .forms import ExampleForm
 
+
 @permission_required('bookshelf.can_view', raise_exception=True)
 def view_item(request):
     # Your view logic for viewing items
