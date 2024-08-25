@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-aca)6h&3gb7magjegd!*=akg!#2rvng=^(hu+_5rn!pa@+hduk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'bookshelf',
+    
 ]
 
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
@@ -53,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "LibraryProject.urls"
+
 
 TEMPLATES = [
     {
@@ -83,7 +85,10 @@ DATABASES = {
     }
 }
 
-
+# Basic Content Security Policy
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", 'https://trustedscripts.com')
+CSP_STYLE_SRC = ("'self'", 'https://trustedstyles.com')
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -124,3 +129,38 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Prevents content sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enables the browser's XSS filtering and ensures it is enabled
+SECURE_BROWSER_XSS_FILTER = True
+
+# Prevents the site from being rendered in a frame or iframe
+X_FRAME_OPTIONS = 'DENY'
+
+
+# Enforces CSRF cookies to be sent over HTTPS
+CSRF_COOKIE_SECURE = True
+
+# Enforces session cookies to be sent over HTTPS
+SESSION_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
+
+# settings.py
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+# Enables the X-Content-Type-Options: nosniff header
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enables the X-XSS-Protection: 1; mode=block header
+SECURE_BROWSER_XSS_FILTER = True
+
+# Prevents the site from being framed by other sites
+X_FRAME_OPTIONS = 'DENY'
+
+
+

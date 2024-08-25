@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, redirect
 from .models import CustomUser
 from .models import Book
+from .forms import BookSearchForm
 
 @permission_required('bookshelf.can_view', raise_exception=True)
 def view_item(request):
@@ -26,3 +27,18 @@ def delete_item(request, item_id):
 def book_list(request):
     books = Book.objects.all()  # Fetch all books from the database
     return render(request, 'bookshelf/book_list.html', {'books': books})
+
+
+
+def search_books(request):
+    form = BookSearchForm(request.GET)
+    if form.is_valid():
+        query = form.cleaned_data.get('query')
+        books = Book.objects.filter(title__icontains=query) if query else Book.objects.all()
+    else:
+        books = Book.objects.all()
+    return render(request, 'bookshelf/book_list.html', {'books': books, 'form': form})
+
+
+
+
