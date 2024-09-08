@@ -19,9 +19,10 @@ class AuthorSerializer(serializers.ModelSerializer):
         model = Author
         fields = ['name', 'books']
 
+
+
 # BookSerializer serializes the title, publication year, and author field
 # It includes custom validation to ensure the publication year is not in the future.
-
 # AuthorSerializer serializes the author's name and includes a nested BookSerializer
 # to serialize related books, using the 'books' related_name defined in the Book model.
 
