@@ -88,9 +88,9 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alx_book_store',
+        'NAME': 'alx_blog',
         'USER': 'root',
-        'PASSWORD': 'mysqloli3532',
+        'PASSWORD': '0924475152@os',
         'HOST': 'localhost',
         'PORT': '3306',
     }
