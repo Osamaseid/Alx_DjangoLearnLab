@@ -54,7 +54,7 @@ class CustomUser(AbstractUser):
             ("can_delete", "Can delete CustomUser"),
         ]
 
-    def str(self):
+    def __str__(self):
         return self.email
     
 class Book(models.Model):
@@ -62,5 +62,5 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     publication_year = models.IntegerField()
 
-    def str(self):
+    def __str__(self):
         return self.title
