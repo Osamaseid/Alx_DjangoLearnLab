@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'taggit',
 ]
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -89,9 +88,9 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alx_blog',
+        'NAME': 'alx_book_store',
         'USER': 'root',
-        'PASSWORD': '0924475152@os',
+        'PASSWORD': 'mysqloli3532',
         'HOST': 'localhost',
         'PORT': '3306',
     }
