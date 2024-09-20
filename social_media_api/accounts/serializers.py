@@ -12,10 +12,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        # Create the user using the validated data
+        # Create the user using the validated data and ensure password is hashed
         user = User.objects.create_user(
             username=validated_data['username'],
-            email=validated_data['email'],
+            email=validated_data.get('email'),
             password=validated_data['password']
         )
         
